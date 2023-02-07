@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/me', to: 'user#show'
   delete '/logout', to: 'sessions#destroy'
-  
+
   # resources :sitters, only: [:index, :show, :create, :update, :destroy]
   get '/sitters', to: 'sitters#index'
   get '/sitters/:id', to: 'sitters#show'
