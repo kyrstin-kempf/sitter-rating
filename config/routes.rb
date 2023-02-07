@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
   get '/me', to: 'user#show'
-
+  delete '/logout', to: 'sessions#destroy'
+  
   # resources :sitters, only: [:index, :show, :create, :update, :destroy]
   get '/sitters', to: 'sitters#index'
   get '/sitters/:id', to: 'sitters#show'
