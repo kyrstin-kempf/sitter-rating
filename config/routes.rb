@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # resources :sitteres, only: [:index, :show]
 
   post '/login', to: 'sessions#create'
-  get '/me', to: 'user#show'
   delete '/logout', to: 'sessions#destroy'
+  get '/me', to: 'user#show'
 
   get '/users', to: 'users#index'
 
