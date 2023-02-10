@@ -6,7 +6,6 @@ import Login from './Login';
 
 function App() {
   const [user, setUser] = useState(null);
-  const [sitter, setSitter] = useState('test');
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -16,29 +15,29 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch('/sitters').then((response) => {
-      if (response.ok) {
-        response.json().then((sitter) => setSitter(sitter));
-      }
-    });
-  }, []);
+  function handleLogin(user) {
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null);
+  }
 
   if (user) {
     return (
       <div>
-      <BrowserRouter>
-        <NavBar onLogout={setUser}/>
-        <h2>Welcome, {user.username}!</h2>
-        {/* <Routes>
-          <Route path='/' element={<Sitters />} />
-          <Route path='/Login' element={<Login onLogin={onLogin} />} />
-        </Routes> */}
-      </BrowserRouter>
-    </div>
+        <BrowserRouter>
+          <h2>Welcome, {user.username}!</h2>
+          {/* <Routes>
+            <Route path='/' element={<Sitters />} />
+            <Route path='/Login' element={<Login onLogin={onLogin} />} />
+          </Routes> */}
+        </BrowserRouter>
+          <NavBar user={user} onLogout={handleLogout}/>
+      </div>
     )
   } else {
-    return <Login onLogin={setUser} />;
+    return <Login onLogin={handleLogin} />;
   }
 }
 
