@@ -21,8 +21,7 @@ function App() {
     return (
       <div>
         <BrowserRouter>
-          <NavBar user={user} setUser={setUser} />
-          <h2>Welcome, {user.username}!</h2>
+          <NavBar setUser={setUser} />
           <Routes>
             <Route path='/' element={<SitterList />} />
             <Route path='/new' element={<NewSitter />} />

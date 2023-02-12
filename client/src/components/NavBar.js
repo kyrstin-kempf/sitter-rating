@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../assets/SitterRatingLogo.png';
 
-function NavBar({ user, setUser }) {
+function NavBar({ setUser }) {
 
     function handleLogout() {
         fetch('/logout', {
@@ -15,23 +16,11 @@ function NavBar({ user, setUser }) {
   
   return (
     <div className='nav-menu'>
-        <h1>SitterRating</h1>
-      <NavLink to='/'>Home</NavLink>
+      <NavLink to='/'><img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/></NavLink>
       <NavLink to='/new'>New Sitter</NavLink>
       <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }
-
-// {user ? (
-//   <div>
-//       <p>Welcome, {user.username}!</p>
-//       {/* <NavLink to='/logout'>Logout</NavLink> */}
-//       <button onClick={handleLogout}>Logout</button>
-//   </div>
-// ) : (
-//   // <NavLink to='/'>Home</NavLink>
-//   <NavLink to='/login'>Login</NavLink>
-// )}
 
 export default NavBar;

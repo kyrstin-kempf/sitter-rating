@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function SitterList() {
+    const [sitters, setSitters] = useState([]);
+
+    useEffect(() => {
+        fetch('/sitters')
+        .then((r) => r.json())
+        .then(setSitters);
+    }, []);
 
     return(
         <div>

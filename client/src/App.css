@@ -30,11 +30,16 @@
 
 div.nav-menu {
   padding: 25px;
+  text-align: right;
 }
 
 div.nav-menu a {
   padding-left:  20px;
   padding-right: 20px;
+}
+
+div.nav-menu img.logo {
+  float: left;
 }
 
 .login-form {
