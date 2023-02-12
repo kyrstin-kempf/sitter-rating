@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ben = User.create!(username: 'benny@aol.com', first_name: 'Ben', last_name: 'Shepiro', email: 'benny@aol.com', password_digest: 'testpassword')
-lacy = User.create!(username: 'lg@hotmail.com', first_name: 'Lacy', last_name: 'Guest', email: 'lg@hotmail.com', password_digest: 'testpassword2222')
+ben = User.create!(email: 'benny@aol.com', first_name: 'Ben', last_name: 'Shepiro', password_digest: 'testpassword')
+lacy = User.create!(email: 'lg@hotmail.com', first_name: 'Lacy', last_name: 'Guest', password_digest: 'testpassword2222')
 
 kyrstin = Sitter.create!(first_name: 'kyrstin', last_name: 'kempf', email: 'kyrstin@aol.com', years_of_experience: 7, hourly_rate: 20)
 jessie = Sitter.create!(first_name: 'jessie', last_name:'thorn', email: 'jessiejones@yahoo.com', years_of_experience: 3, hourly_rate: 18)

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar';
-import Login from './Login';
-
+import Login from '../pages/Login';
+import SitterList from '../pages/SitterList';
+import NewSitter from '../pages/NewSitter';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -15,30 +16,20 @@ function App() {
     });
   }, []);
 
-  function handleLogin(user) {
-    setUser(user);
-  }
+  if (!user) return <Login onLogin={setUser}/>;
 
-  function handleLogout() {
-    setUser(null);
-  }
-
-  if (user) {
     return (
       <div>
         <BrowserRouter>
+          <NavBar user={user} setUser={setUser} />
           <h2>Welcome, {user.username}!</h2>
-          {/* <Routes>
-            <Route path='/' element={<Sitters />} />
-            <Route path='/Login' element={<Login onLogin={onLogin} />} />
-          </Routes> */}
+          <Routes>
+            <Route path='/' element={<SitterList />} />
+            <Route path='/new' element={<NewSitter />} />
+          </Routes>
         </BrowserRouter>
-          <NavBar user={user} onLogout={handleLogout}/>
       </div>
     )
-  } else {
-    return <Login onLogin={handleLogin} />;
-  }
 }
 
 export default App;

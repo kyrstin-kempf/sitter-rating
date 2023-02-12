@@ -1,9 +1,10 @@
+import React, { useState } from 'react';
+
 function SignUp({ onLogin }) {
-    const [username, setUsername] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
   
     function handleSubmit(e) {
@@ -14,7 +15,6 @@ function SignUp({ onLogin }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
           firstName,
           lastName,
           email,
@@ -27,22 +27,37 @@ function SignUp({ onLogin }) {
     }
   
     return (
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+      <form className='login-form' onSubmit={handleSubmit}>
+        <h1>Sign Up</h1>
+        <label htmlFor="first name">First Name:</label>
         <input
           type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          id="first name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="last name">Last Name:</label>
+        <input
+          type="text"
+          id="last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <label htmlFor="signup email">Email:</label>
+        <input
+          type="text"
+          id="signup email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="signup password">Password:</label>
         <input
           type="password"
-          id="password"
+          id="signup password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <label htmlFor="password_confirmation">Confirm Password:</label>
+        <label htmlFor="password">Confirm Password:</label>
         <input
           type="password"
           id="password_confirmation"
