@@ -7,24 +7,33 @@ import NewSitter from '../pages/NewSitter';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [sitters, setSitters] = useState([]);
 
   useEffect(() => {
-    fetch("/me").then((response) => {
+    document.title = 'SitterRating';
+  }, []);
+
+  useEffect(() => {
+    fetch('/me').then((response) => {
       if (response.ok) {
         response.json().then((user) => setUser(user));
       }
     });
   }, []);
 
+  const addSitter = (sitter) => {
+    setSitters([...sitters, {...sitter, ratings: []}])
+  }
+
   if (!user) return <Login onLogin={setUser}/>;
 
     return (
       <div>
         <BrowserRouter>
-          <NavBar setUser={setUser} />
+          <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path='/' element={<SitterList />} />
-            <Route path='/new' element={<NewSitter />} />
+            <Route path='/new' element={<NewSitter addSitter={addSitter} />} />
           </Routes>
         </BrowserRouter>
       </div>

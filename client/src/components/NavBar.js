@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/SitterRatingLogo.png';
 
-function NavBar({ setUser }) {
+function NavBar({ user, setUser }) {
 
     function handleLogout() {
         fetch('/logout', {

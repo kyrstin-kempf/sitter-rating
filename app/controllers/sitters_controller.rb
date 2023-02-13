@@ -1,7 +1,6 @@
 class SittersController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-
+    skip_before_action :authorize, only: [:index, :create]
+   
     # GET /sitters
     def index 
         #byebug
@@ -10,47 +9,39 @@ class SittersController < ApplicationController
     end
 
     # GET /sitters/:id
-    def show 
-        sitter = find_sitter
-        render json: sitter
-    end
+    # def show 
+    #     sitter = find_sitter
+    #     render json: sitter
+    # end
 
     # POST /sitters
     def create 
-        sitter = Sitter.create(sitter_params)
+        sitter = @current_user.sitters.create!(sitter_params)
         render json: sitter, status: :created 
     end
 
     # PATCH /sitters/:id
-    def update 
-        sitter = find_sitter
-        sitter.update(sitter_params) 
-        render json: sitter
-    end
+    # def update 
+    #     sitter = find_sitter
+    #     sitter.update(sitter_params) 
+    #     render json: sitter
+    # end
 
     # DELETE /sitters/:id 
-    def destroy 
-        sitter = find_sitter 
-        sitter.destroy 
-        head :no_content 
-    end
+    # def destroy 
+    #     sitter = find_sitter 
+    #     sitter.destroy 
+    #     head :no_content 
+    # end
 
     private
 
-    def find_sitter
-        Sitter.find(params[:id])
-    end
+    # def find_sitter
+    #     Sitter.find(params[:id])
+    # end
     
     def sitter_params
         params.permit(:first_name, :last_name, :email, :years_of_experience, :hourly_rate)
-    end
-
-    def render_not_found_response
-        render json: { error: "Sitter not found" }, status: :not_found 
-    end
-
-    def render_unprocessable_entity_response(invalid)
-        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
 end

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/SitterRatingLogo.png';
 
 function SignUp({ onLogin }) {
     const [email, setEmail] = useState("");
@@ -6,6 +7,7 @@ function SignUp({ onLogin }) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
   
     function handleSubmit(e) {
       e.preventDefault();
@@ -28,6 +30,7 @@ function SignUp({ onLogin }) {
   
     return (
       <form className='login-form' onSubmit={handleSubmit}>
+        <img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/>
         <h1>Sign Up</h1>
         <label htmlFor="first name">First Name:</label>
         <input

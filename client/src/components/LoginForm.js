@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../assets/SitterRatingLogo.png';
 
 function Login({ onLogin }) {
     const [email, setEmail] = useState("");
@@ -19,6 +20,7 @@ function Login({ onLogin }) {
   
     return (
       <form className='login-form' onSubmit={handleSubmit}>
+        <img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/>
         <h1>Log In</h1>
         <label htmlFor="login email">Email:</label>
         <input

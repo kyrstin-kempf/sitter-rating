@@ -12,7 +12,7 @@ lacy = User.create!(email: 'lg@hotmail.com', first_name: 'Lacy', last_name: 'Gue
 kyrstin = Sitter.create!(first_name: 'kyrstin', last_name: 'kempf', email: 'kyrstin@aol.com', years_of_experience: 7, hourly_rate: 20)
 jessie = Sitter.create!(first_name: 'jessie', last_name:'thorn', email: 'jessiejones@yahoo.com', years_of_experience: 3, hourly_rate: 18)
 
-Rating.create!(rating: 4.2, sitter_id: kyrstin.id, user_id: ben.id)
-Rating.create!(rating: 3.8, sitter_id: jessie.id, user_id: ben.id)
-Rating.create!(rating: 2.8, sitter_id: kyrstin.id, user_id: ben.id)
-Rating.create!(rating: 5, sitter_id: jessie.id, user_id: ben.id)
+Rating.create!(rating: 4.2, review:'Did a great job', sitter_id: kyrstin.id, user_id: ben.id)
+Rating.create!(rating: 3.8, review:'Arrived late but otherwise great work', sitter_id: jessie.id, user_id: ben.id)
+Rating.create!(rating: 2.8, review:'', sitter_id: kyrstin.id, user_id: ben.id)
+Rating.create!(rating: 5, review:'Will book again!', sitter_id: jessie.id, user_id: ben.id)
