@@ -11,14 +11,15 @@ function SignUp({ onLogin }) {
   
     function handleSubmit(e) {
       e.preventDefault();
+      console.log('clicked')
       fetch("/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstName,
-          lastName,
+          first_name: firstName,
+          last_name: lastName,
           email,
           password,
           password_confirmation: passwordConfirmation,

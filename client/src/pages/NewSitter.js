@@ -18,11 +18,11 @@ function NewSitter({ addSitter }) {
             "Content-Type": "application/json",
             },
             body: JSON.stringify({
-            firstName,
-            lastName,
+            first_name: firstName,
+            last_name: lastName,
             email,
-            experience,
-            hourlyRate,
+            years_of_experience: experience,
+            hourly_rate: hourlyRate,
             }),
         })
             .then((r) => r.json())
