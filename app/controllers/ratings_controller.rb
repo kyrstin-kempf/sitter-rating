@@ -15,17 +15,17 @@ class RatingsController < ApplicationController
     end
 
     # PATCH /ratings/:id
-    def update 
-        rating = find_rating
-        rating.update(rating_params) 
-        render json: rating
-    end
+    # def update 
+    #     rating = find_rating
+    #     rating.update(rating_params) 
+    #     render json: rating
+    # end
 
     private 
     
-    def find_rating 
-        Rating.find(params[:id])
-    end
+    # def find_rating 
+    #     Rating.find(params[:id])
+    # end
     
     def rating_params
         params.permit(:rating, :review, :sitter_id, :user_id)

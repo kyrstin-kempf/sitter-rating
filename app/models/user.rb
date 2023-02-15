@@ -1,11 +1,20 @@
 class User < ApplicationRecord
     has_many :ratings
     has_many :sitters, through: :ratings
-    has_secure_password
     
+    has_secure_password
 
-    # validates :password, presence: true
+    before_save :downcase_email
+
+    validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
+    # validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
     validates :first_name, presence: true
     validates :last_name, presence: true
-    validates :email, presence: true, uniqueness: true
+
+    private
+
+    def downcase_email 
+        self.email = email.downcase 
+    end
+
 end

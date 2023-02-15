@@ -25,7 +25,7 @@ function App() {
     setSitters([...sitters, {...sitter, ratings: []}])
   }
 
-  if (!user) return <Login onLogin={setUser}/>;
+  if (!user) return <Login onLogin={setUser} />;
 
     return (
       <div>
