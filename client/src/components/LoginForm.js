@@ -4,9 +4,12 @@ import logo from '../assets/SitterRatingLogo.png';
 function Login({ onLogin }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
   
     function handleSubmit(e) {
       e.preventDefault();
+      setIsLoading(true);
       fetch("/login", {
         method: "POST",
         headers: {
@@ -14,8 +17,14 @@ function Login({ onLogin }) {
         },
         body: JSON.stringify({ email, password }),
       })
-        .then((r) => r.json())
-        .then((user) => onLogin(user));
+        .then((r) => {
+          setIsLoading(false);
+          if (r.ok) {
+            r.json().then((user) => onLogin(user));
+          } else {
+            r.json().then((err) => setErrors(err.errors));
+          }
+        });
     }
   
     return (
@@ -38,7 +47,14 @@ function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">
+          {isLoading ? "Loading..." : "Login"}
+        </button>
+        <div id='login-error'>
+          {errors.map((err) => (
+            <p key={err}>{err}</p>
+          ))}
+        </div>
       </form>
     );
   }

@@ -32,7 +32,7 @@ function App() {
         <BrowserRouter>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path='/' element={<SitterList />} />
+            <Route exact path='/' element={<SitterList />} />
             <Route path='/new' element={<NewSitter addSitter={addSitter} />} />
           </Routes>
         </BrowserRouter>
