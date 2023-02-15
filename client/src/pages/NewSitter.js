@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function NewSitter({ addSitter }) {
     const [firstName, setFirstName] = useState("");
@@ -7,11 +7,13 @@ function NewSitter({ addSitter }) {
     const [email, setEmail] = useState("");
     const [experience, setExperience] = useState("");
     const [hourlyRate, setHourlyRate] = useState("");
-    // const navigate = useNavigate();
-
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
+        setIsLoading(true);
         fetch("/sitters", {
             method: "POST",
             headers: {
@@ -25,10 +27,14 @@ function NewSitter({ addSitter }) {
             hourly_rate: hourlyRate,
             }),
         })
-            .then((r) => r.json())
-            .then((data) => {
-                console.log(data)
-            });
+            .then((r) => {
+            setIsLoading(false);
+            if (r.ok) {
+                navigate('/');
+            } else {
+                r.json().then((err) => setErrors(err.errors)); 
+            } 
+        });
     }
 
     return (
@@ -69,7 +75,14 @@ function NewSitter({ addSitter }) {
             value={hourlyRate}
             onChange={(e) => setHourlyRate(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button type="submit">
+                {isLoading ? 'Loading...' : 'Submit'}
+            </button>
+            <div>
+                {errors.map((err) => (
+                    <p key={err}>{err}</p>
+                ))}
+            </div>
         </form>
     );
 

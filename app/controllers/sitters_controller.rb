@@ -16,7 +16,7 @@ class SittersController < ApplicationController
 
     # POST /sitters
     def create 
-        sitter = sitters.create!(sitter_params)
+        sitter = Sitter.create!(sitter_params)
         render json: sitter, status: :created 
     end
 

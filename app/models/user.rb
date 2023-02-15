@@ -7,7 +7,6 @@ class User < ApplicationRecord
     before_save :downcase_email
 
     validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
-    # validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
     validates :first_name, presence: true
     validates :last_name, presence: true
 
