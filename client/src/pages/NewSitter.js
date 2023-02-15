@@ -79,7 +79,7 @@ function NewSitter({ addSitter }) {
                 {isLoading ? 'Loading...' : 'Submit'}
             </button>
             <div>
-                {errors.map((err) => (
+                {errors?.map((err) => (
                     <p key={err}>{err}</p>
                 ))}
             </div>

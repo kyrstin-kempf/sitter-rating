@@ -51,7 +51,7 @@ function Login({ onLogin }) {
           {isLoading ? "Loading..." : "Login"}
         </button>
         <div id='login-error'>
-          {errors.map((err) => (
+          {errors?.map((err) => (
             <p key={err}>{err}</p>
           ))}
         </div>

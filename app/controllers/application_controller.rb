@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
     render json: { errors: ['Not authorized'] }, status: :unauthorized if session[:user_id].blank?
   end
 
-  def render_unprocessable_entity_response(expection)
+  def render_unprocessable_entity_response(exception)
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity 
   end
 
