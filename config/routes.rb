@@ -12,14 +12,14 @@ Rails.application.routes.draw do
 
   # resources :sitters, only: [:index, :show, :create, :update, :destroy]
   get '/sitters', to: 'sitters#index'
-  # get '/sitters/:id', to: 'sitters#show'
+  get '/sitters/:id', to: 'sitters#show'
   post '/sitters', to: 'sitters#create'
   # patch '/sitters/:id', to: 'sitters#update'
   # delete '/sitters/:id', to: 'sitters#destroy'
   
   # resources :ratings, only: [:index, :show, :create, :update]
   # get '/ratings', to: 'ratings#index'
-  # post '/ratings', to: 'ratings#create'
+  post '/ratings', to: 'ratings#create'
   # patch '/ratings/:id', to: 'ratings#update'
 
 end

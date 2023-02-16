@@ -9,10 +9,15 @@ class SittersController < ApplicationController
     end
 
     # GET /sitters/:id
-    # def show 
-    #     sitter = find_sitter
-    #     render json: sitter
-    # end
+    def show 
+        # sitter = find_sitter
+        sitter = Sitter.find_by(id: params[:id])
+        if sitter 
+            render json: sitter
+        else 
+            render json: { error: 'Sitter not found' }, status: :not_found
+        end
+    end
 
     # POST /sitters
     def create 
