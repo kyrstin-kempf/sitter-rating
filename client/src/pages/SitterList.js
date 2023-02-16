@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
+import starRating from '../assets/Five_Stars.png'
+import { useNavigate } from 'react-router-dom';
+const navigate = useNavigate();
 
-function SitterList() {
-    const [sitters, setSitters] = useState([]);
+function SitterList({ sitters }) {
 
-    useEffect(() => {
-        fetch('/sitters')
-        .then((r) => r.json())
-        .then(setSitters);
-        // .then((s) => console.log(s));
-    }, []);
+    function handleAddRating() {
+        navigate('/');
+    }
 
-    return(
+    return (
         <div className="all-sitters-container">
             {sitters.length > 0 ? (
                 sitters.map((sitter) => (
@@ -18,14 +17,13 @@ function SitterList() {
                         <h2>{sitter.first_name} {sitter.last_name}</h2>
                         <p>Experience: {sitter.years_of_experience} years</p>
                         <p>Hourly rate: ${sitter.hourly_rate}</p>
-                        {(
-                            sitter.ratings.map((r) => (
-                                <div key={r.id} className="review-container">
-                                    <p>{r.rating}</p>
-                                    <p>{r.review}</p>
-                                </div>
-                            ))
-                        )}
+                        <span>
+                        <img className='rating-stars' src={starRating} alt='average rating'/> | <p># ratings</p>
+                        </span>
+                        <Link to={`/sitters/${sitter.id}`}>
+                        <p>See all reviews ›</p>
+                        </Link>
+                        <button className='add-rating' onClick={handleAddRating}>+ Add Rating</button>
                     </div>
                 ))
             ) : (
