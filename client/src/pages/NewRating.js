@@ -1,25 +1,17 @@
 import React, { useState } from "react";
 // import { useNavigate } from 'react-router-dom';
-import starRating from '../assets/Five_Stars.png'
-// import { Rating } from 'react-simple-star-rating'
+import oneStar from '../assets/One_Star.png'
+import twoStars from '../assets/Two_Stars.png'
+import threeStars from '../assets/Three_Stars.png'
+import fourStars from '../assets/Four_Stars.png'
+import fiveStars from '../assets/Five_Stars.png'
 
 function NewRating({ addSitter }) {
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState("");
-    const [email, setEmail] = useState("");
-    const [experience, setExperience] = useState("");
-    const [hourlyRate, setHourlyRate] = useState("");
     const [errors, setErrors] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
     // const navigate = useNavigate();
-
-    // const handleRating = (rate: number) => {
-    //     setRating(rate)
-    // }
-
-    // const onPointerEnter = () => console.log('Enter')
-    // const onPointerLeave = () => console.log('Leave')
-    // const onPointerMove = (value: 1, index: 0) => console.log(value, index)
 
 
     // function handleSubmit(e) {
@@ -59,55 +51,77 @@ function NewRating({ addSitter }) {
     return (
         <form className='new-rating-form' >
             <h1>Add New Rating</h1>
-            <label htmlFor="rating">Rating</label>
-            {/* <Rating
-                onClick={handleRating} initialValue={rating}
-                onPointerEnter={onPointerEnter}
-                onPointerLeave={onPointerLeave}
-                onPointerMove={onPointerMove}
-                
-            /> */}
-            <input
+            <p className="rating-labels">Rating</p>
+            <div className="rating-radio-box">
+                <div className="rating-box">
+                <input 
+                type="radio" 
+                id="1" 
+                name="rating_num"
+                checked={rating === '1'} 
+                value="1"
+                onClick={() => setGender('1')}
+                />
+                <label htmlFor="1"><img className='rating-stars' src={oneStar} alt='one star'/></label>
+                </div>
+                <div className="rating-box">
+                <input 
+                type="radio" 
+                id="2" 
+                name="rating_num" 
+                value="2"
+                />
+                <label htmlFor="2"><img className='rating-stars' src={twoStars} alt='two stars'/></label>
+                </div>
+                <div className="rating-box">
+                <input 
+                type="radio" 
+                id="3" 
+                name="rating_num" 
+                value="3"
+                />
+                <label htmlFor="3"><img className='rating-stars' src={threeStars} alt='three stars'/></label>
+                </div>
+                <div className="rating-box">
+                <input 
+                type="radio" 
+                id="4" 
+                name="rating_num" 
+                value="4"
+                />
+                <label htmlFor="4"><img className='rating-stars' src={fourStars} alt='four stars'/></label>
+                </div>
+                <div className="rating-box">
+                <input 
+                type="radio" 
+                id="5" 
+                name="rating_num" 
+                value="5"
+                />
+                <label htmlFor="5"><img className='rating-stars' src={fiveStars} alt='five stars'/></label>
+                </div>
+            </div>
+            
+            {/* <input
             type="float"
             id="rating"
             value={rating}
             onChange={(e) => setRating(e.target.value)}
-            />
-            <label htmlFor="review">Review</label>
-            <input
+            /> */}
+            <label htmlFor="review" className="rating-labels">Review</label>
+            <textarea
             type="text"
             id="review"
             value={review}
             onChange={(e) => setReview(e.target.value)}
             />
-            <label htmlFor="email">Email:</label>
-            <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="years_of_experience">Years of Experience</label>
-            <input
-            type="text"
-            id="years_of_experience"
-            value={experience}
-            onChange={(e) => setExperience(e.target.value)}
-            />
-            <label htmlFor="hourly_rate">Hourly Rate</label>
-            <input
-            type="hourly_rate"
-            id="hourly_rate"
-            value={hourlyRate}
-            onChange={(e) => setHourlyRate(e.target.value)}
-            />
             <button type="submit">
                 submit
                 {/* {isLoading ? 'Loading...' : 'Submit'} */}
             </button>
-            <span>
+            {/* <span>
                     <img className='rating-stars' src={starRating} alt='average rating'/> | <p># ratings</p>
-                    </span>
+                    </span> */}
             <div>
                 {errors?.map((err) => (
                     <p key={err}>{err}</p>
