@@ -49,6 +49,8 @@ div.nav-menu img.logo {
   float: left;
 }
 
+/* -------------------------------------- Forms */
+
 .login-form {
   padding: 60px;
   margin: 40px;
@@ -71,6 +73,19 @@ div.nav-menu img.logo {
   width: 100%;
   display: inline-block;
 }
+
+.new-rating-form {
+  padding: 60px;
+  margin: 40px;
+  border: 2px solid #000;
+}
+.new-rating-form input {
+  padding: 5px;
+  width: 100%;
+  display: inline-block;
+}
+
+
 
 .all-sitters-container {
   margin-left: 25px;
