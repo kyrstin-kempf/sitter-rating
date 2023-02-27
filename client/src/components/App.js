@@ -5,6 +5,8 @@ import Login from '../pages/Login';
 import SitterList from '../pages/SitterList';
 import NewSitter from '../pages/NewSitter';
 import OneSitter from '../pages/OneSitter';
+import NewRating from '../pages/NewRating';
+import MySittersList from '../pages/MySittersList';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -39,9 +41,11 @@ function App() {
         <BrowserRouter>
           <NavBar setUser={setUser} />
           <Routes>
-            <Route exact path='/' element={<SitterList sitters={sitters} />} />
-            <Route path='/new' element={<NewSitter addSitter={addSitter} />} />
+            <Route exact path='/sitters/my_sitters' element={<MySittersList />} />
+            <Route path='/sitters' element={<SitterList user={user} sitters={sitters} />} />
+            <Route path='/sitters/new' element={<NewSitter addSitter={addSitter} />} />
             <Route path='/sitters/:id' element={<OneSitter sitters={sitters}/>} />
+            <Route path='/ratings/new' element={<NewRating />} />
           </Routes>
         </BrowserRouter>
       </div>
