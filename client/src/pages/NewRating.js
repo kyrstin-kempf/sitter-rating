@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import starRating from '../assets/Five_Stars.png'
+// import { Rating } from 'react-simple-star-rating'
 
 function NewRating({ addSitter }) {
     const [rating, setRating] = useState(0);
@@ -9,8 +10,17 @@ function NewRating({ addSitter }) {
     const [experience, setExperience] = useState("");
     const [hourlyRate, setHourlyRate] = useState("");
     const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
+    // const [isLoading, setIsLoading] = useState(false);
+    // const navigate = useNavigate();
+
+    // const handleRating = (rate: number) => {
+    //     setRating(rate)
+    // }
+
+    // const onPointerEnter = () => console.log('Enter')
+    // const onPointerLeave = () => console.log('Leave')
+    // const onPointerMove = (value: 1, index: 0) => console.log(value, index)
+
 
     // function handleSubmit(e) {
     //     e.preventDefault();
@@ -50,6 +60,13 @@ function NewRating({ addSitter }) {
         <form className='new-rating-form' >
             <h1>Add New Rating</h1>
             <label htmlFor="rating">Rating</label>
+            {/* <Rating
+                onClick={handleRating} initialValue={rating}
+                onPointerEnter={onPointerEnter}
+                onPointerLeave={onPointerLeave}
+                onPointerMove={onPointerMove}
+                
+            /> */}
             <input
             type="float"
             id="rating"
@@ -85,7 +102,8 @@ function NewRating({ addSitter }) {
             onChange={(e) => setHourlyRate(e.target.value)}
             />
             <button type="submit">
-                {isLoading ? 'Loading...' : 'Submit'}
+                submit
+                {/* {isLoading ? 'Loading...' : 'Submit'} */}
             </button>
             <span>
                     <img className='rating-stars' src={starRating} alt='average rating'/> | <p># ratings</p>
