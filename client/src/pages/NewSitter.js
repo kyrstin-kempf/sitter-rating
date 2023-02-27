@@ -8,12 +8,12 @@ function NewSitter({ addSitter }) {
     const [experience, setExperience] = useState("");
     const [hourlyRate, setHourlyRate] = useState("");
     const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
-        setIsLoading(true);
+        // setIsLoading(true);
         fetch("/sitters", {
             method: "POST",
             headers: {
@@ -27,14 +27,19 @@ function NewSitter({ addSitter }) {
             hourly_rate: hourlyRate,
             }),
         })
-            .then((r) => {
-            setIsLoading(false);
-            if (r.ok) {
-                navigate('/');
-            } else {
-                r.json().then((err) => setErrors(err.errors)); 
-            } 
-        });
+            .then(r => r.json())
+            // {
+            //     setIsLoading(false);
+            //     if (r.ok) {} 
+            //     else {
+            //         r.json().then((err) => setErrors(err.errors)); 
+            //     }
+            // })
+            .then((data) => {
+                console.log(data);
+                addSitter(data)
+            })
+            .then(updatedSitterList => navigate('/sitters'))
     }
 
     return (
@@ -76,7 +81,8 @@ function NewSitter({ addSitter }) {
             onChange={(e) => setHourlyRate(e.target.value)}
             />
             <button type="submit">
-                {isLoading ? 'Loading...' : 'Submit'}
+                Submit
+                {/* {isLoading ? 'Loading...' : 'Submit'} */}
             </button>
             <div>
                 {errors?.map((err) => (
