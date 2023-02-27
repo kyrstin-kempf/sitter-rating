@@ -28,7 +28,7 @@
 
 /* ------------- */
 
-h2, p {
+h1, h2, p {
   margin: 0;
   line-height: 150%;
 }
@@ -48,44 +48,6 @@ div.nav-menu a {
 div.nav-menu img.logo {
   float: left;
 }
-
-/* -------------------------------------- Forms */
-
-.login-form {
-  padding: 60px;
-  margin: 40px;
-  border: 2px solid #000;
-  height: 350px;
-  width: 400px;
-}
-
-.login-form input {
-  width: 100%;
-}
-
-.new-sitter-form {
-  padding: 60px;
-  margin: 40px;
-  border: 2px solid #000;
-}
-.new-sitter-form input {
-  padding: 5px;
-  width: 100%;
-  display: inline-block;
-}
-
-.new-rating-form {
-  padding: 60px;
-  margin: 40px;
-  border: 2px solid #000;
-}
-.new-rating-form input {
-  padding: 5px;
-  width: 100%;
-  display: inline-block;
-}
-
-
 
 .all-sitters-container {
   margin-left: 25px;
@@ -117,4 +79,82 @@ div.review-container {
   margin-left: 25px;
   margin-right: 25px;
   text-align: center;
+}
+
+/* -------------------------------------- Forms */
+
+.login-form {
+  padding: 60px;
+  margin: 40px;
+  border: 2px solid #000;
+  height: 350px;
+  width: 400px;
+}
+
+.login-form input {
+  width: 100%;
+}
+
+.new-sitter-form {
+  padding: 60px;
+  margin: 40px;
+  border: 2px solid #000;
+}
+.new-sitter-form input {
+  padding: 5px;
+  width: 100%;
+  display: inline-block;
+}
+
+.new-rating-form {
+  padding: 20px;
+  margin: 40px 25%;
+  border: 2px solid #000;
+}
+.new-rating-form input {
+  padding: 5px;
+  margin: 8px 0 20px 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+/* ----------------------------------- Rating Radio Buttons */
+
+.rating-radio-box {
+  display: table;
+  margin: 8px 0 20px 0;
+  /* outline: solid 1px black; */
+}
+
+.rating-box {
+  float: left;
+  width: 120px;
+  text-align: center;
+  padding: 2px;
+}
+
+.rating-box input[type='radio'] {
+  accent-color: black;
+  margin-bottom: 8px;
+}
+
+.rating-stars {
+  width: 90px;
+  padding-top: 5px;
+}
+
+#review {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  margin: 8px 0 20px 0;
+  box-sizing: border-box;
+  border: 1px solid #e4e0e0;
+  border-radius: 2px;
+  resize: none;
+  font-family: inherit;
+}
+#review:focus {
+  outline: solid 1px #7CA7BE;
 }
