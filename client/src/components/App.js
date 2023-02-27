@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar';
 import Login from '../pages/Login';
+import MySittersList from '../pages/MySittersList';
 import SitterList from '../pages/SitterList';
 import NewSitter from '../pages/NewSitter';
 import OneSitter from '../pages/OneSitter';
 import NewRating from '../pages/NewRating';
-import MySittersList from '../pages/MySittersList';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -41,7 +41,7 @@ function App() {
         <BrowserRouter>
           <NavBar setUser={setUser} />
           <Routes>
-            <Route exact path='/sitters/my_sitters' element={<MySittersList />} />
+            <Route path='/' element={<MySittersList />} />
             <Route path='/sitters' element={<SitterList user={user} sitters={sitters} />} />
             <Route path='/sitters/new' element={<NewSitter addSitter={addSitter} />} />
             <Route path='/sitters/:id' element={<OneSitter sitters={sitters}/>} />

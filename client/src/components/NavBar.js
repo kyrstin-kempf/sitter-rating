@@ -17,8 +17,8 @@ function NavBar({ setUser }) {
   
   return (
     <div className='nav-menu'>
-      <NavLink to='/sitters'><img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/></NavLink>
-      <NavLink to='/sitters/my_sitters'>MySitters</NavLink>
+      <NavLink to='/'><img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/></NavLink>
+      <NavLink to='/sitters'>All Sitters</NavLink>
       <NavLink to='/sitters/new'>New Sitter</NavLink>
       <button onClick={handleLogout}>Logout</button>
     </div>
