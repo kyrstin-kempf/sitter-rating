@@ -41,8 +41,8 @@ function App() {
         <BrowserRouter>
           <NavBar setUser={setUser} />
           <Routes>
-            <Route path='/' element={<MySittersList />} />
-            <Route path='/sitters' element={<SitterList user={user} sitters={sitters} />} />
+            <Route path='/' element={<MySittersList user={user} sitters={sitters} />} />
+            <Route path='/sitters' element={<SitterList sitters={sitters} />} />
             <Route path='/sitters/new' element={<NewSitter addSitter={addSitter} />} />
             <Route path='/sitters/:id' element={<OneSitter sitters={sitters}/>} />
             <Route path='/ratings/new' element={<NewRating />} />
