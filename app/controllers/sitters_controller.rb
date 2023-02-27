@@ -1,5 +1,5 @@
 class SittersController < ApplicationController
-    skip_before_action :authorize, only: [:index]
+    skip_before_action :authorize, only: [:index, :show, :destroy]
    
     # GET /sitters
     def index 
@@ -33,17 +33,17 @@ class SittersController < ApplicationController
     # end
 
     # DELETE /sitters/:id 
-    # def destroy 
-    #     sitter = find_sitter 
-    #     sitter.destroy 
-    #     head :no_content 
-    # end
+    def destroy 
+        sitter = find_sitter 
+        sitter.destroy 
+        head :no_content 
+    end
 
     private
 
-    # def find_sitter
-    #     Sitter.find(params[:id])
-    # end
+    def find_sitter
+        Sitter.find(params[:id])
+    end
     
     def sitter_params
         params.permit(:first_name, :last_name, :email, :years_of_experience, :hourly_rate)
