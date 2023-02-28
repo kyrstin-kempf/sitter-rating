@@ -13,9 +13,6 @@ function SitterList({ sitters }) {
                         <Link to={`/sitters/${sitter.id}`}>
                         <p>See all reviews ›</p>
                         </Link>
-                        <Link to={`/ratings/new`}>
-                        <p className='add-rating'>+ Add Rating</p>
-                        </Link>
                     </div>
                 ))
             ) : (

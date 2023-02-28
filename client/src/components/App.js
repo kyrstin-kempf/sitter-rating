@@ -6,7 +6,7 @@ import MySittersList from '../pages/MySittersList';
 import SitterList from '../pages/SitterList';
 import NewSitter from '../pages/NewSitter';
 import OneSitter from '../pages/OneSitter';
-import NewRating from '../pages/NewRating';
+// import NewRating from '../pages/NewRating';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -34,6 +34,10 @@ function App() {
     setSitters([...sitters, {...sitter, ratings: []}])
   }
 
+  const addSitterRating = (rating) => {
+    console.log(rating)
+  }
+
   if (!user) return <Login onLogin={setUser} />;
 
     return (
@@ -44,8 +48,7 @@ function App() {
             <Route path='/' element={<MySittersList user={user} sitters={sitters} />} />
             <Route path='/sitters' element={<SitterList sitters={sitters} />} />
             <Route path='/sitters/new' element={<NewSitter addSitter={addSitter} />} />
-            <Route path='/sitters/:id' element={<OneSitter sitters={sitters}/>} />
-            <Route path='/ratings/new' element={<NewRating />} />
+            <Route path='/sitters/:id' element={<OneSitter sitters={sitters} user={user} addSitterRating={addSitterRating} />} />
           </Routes>
         </BrowserRouter>
       </div>
