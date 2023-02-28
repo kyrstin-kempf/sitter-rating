@@ -1,6 +1,9 @@
 class RatingsController < ApplicationController
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
+    # skip_before_action :authorize, only: :index
+
 
     # GET /ratings
     def index 
@@ -10,7 +13,7 @@ class RatingsController < ApplicationController
 
     # POST /ratings
     def create 
-        rating = Rating.create(rating_params)
+        rating = Rating.create!(rating_params)
         render json: rating, status: :created 
     end
 
