@@ -25,13 +25,6 @@ class SittersController < ApplicationController
         render json: sitter, status: :created 
     end
 
-    # PATCH /sitters/:id
-    # def update 
-    #     sitter = find_sitter
-    #     sitter.update(sitter_params) 
-    #     render json: sitter
-    # end
-
     # DELETE /sitters/:id 
     def destroy 
         sitter = find_sitter 
