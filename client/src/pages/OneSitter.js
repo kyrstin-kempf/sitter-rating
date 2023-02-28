@@ -2,17 +2,27 @@ import React, { useState } from "react";
 import { useParams} from "react-router-dom";
 // import { Link } from 'react-router-dom';
 import NewRating from "./NewRating";
+import editIcon from '../assets/edit_icon.png'
+import oneStar from '../assets/One_Star.png'
+import twoStars from '../assets/Two_Stars.png'
+import threeStars from '../assets/Three_Stars.png'
+import fourStars from '../assets/Four_Stars.png'
+import fiveStars from '../assets/Five_Stars.png'
 
 function OneSitter({ sitters, user, addSitterRating }) {
     const { id } = useParams();
     const [isShown, setIsShown] = useState(false);
     
     const sitter = sitters.find(s => JSON.stringify(s.id) === id)
-    // console.log(sitter)
 
     const handleClick = () => {
         setIsShown(!isShown)
     };
+
+    function handleEdit(id) {
+        // console.log(`edit me ${id}`)
+        
+    }
 
     return (
         <div>
@@ -25,9 +35,28 @@ function OneSitter({ sitters, user, addSitterRating }) {
                         {(
                             sitter.ratings.map((r) => (
                                 <div key={r.id} className="review-container">
-                                    <p>{r.rating}</p>
+                                    {(() => {
+                                        switch (r.rating) {
+                                            case 5:
+                                                return <img className='rating-stars-ind' src={fiveStars} alt='five stars'/>
+                                            case 4:
+                                                return <img className='rating-stars-ind' src={fourStars} alt='four stars'/>
+                                            case 3:
+                                                return <img className='rating-stars-ind' src={threeStars} alt='three stars'/>
+                                            case 2:
+                                                return <img className='rating-stars-ind' src={twoStars} alt='two stars'/>
+                                            default:
+                                                return <img className='rating-stars-ind' src={oneStar} alt='one star'/>
+                                        }
+                                    }) ()}
                                     <p>{r.review}</p>
-                                    <p>{r.user_id}</p>
+                                    {user.id === r.user_id ? (
+                                        <span className="edit-container">
+                                        <img className='edit-icon' onClick={() => handleEdit(r.id)} src={editIcon} alt='edit rating'/>
+                                        </span>
+                                    ) : (
+                                        <span></span>
+                                    )}
                                 </div>
                             ))
                         )}
