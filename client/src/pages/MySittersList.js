@@ -1,13 +1,5 @@
 
 function MySittersList({ user, sitters }) {
-    
-    // const sitter_name = user.ratings.map((r) => (
-    //     <div key={r.id}>
-    //         <p>{r.sitter_id}</p>
-    //     </div>
-    // ))
-    // console.log(user.sitters)
-    // const sitter = sitters.find(s => JSON.stringify(s.id) === id)
 
     return (
         <div className="all-sitters-container">
