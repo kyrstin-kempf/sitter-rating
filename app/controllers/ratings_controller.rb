@@ -12,27 +12,28 @@ class RatingsController < ApplicationController
     end
 
     # GET /ratings/:id
-    def show 
-        rating = find_rating
-        if rating 
-            render json: rating
-        else 
-            render json: { error: 'Rating not found' }, status: :not_found
-        end
-    end
+    # def show 
+    #     rating = find_rating
+    #     if rating 
+    #         render json: rating
+    #     else 
+    #         render json: { error: 'Rating not found' }, status: :not_found
+    #     end
+    # end
 
     # POST /ratings
+    # collection method
     def create 
-        rating = Rating.create!(rating_params)
+        rating = @current_user.ratings.create!(rating_params) 
         render json: rating, status: :created 
     end
 
     # PATCH /ratings/:id
-    # def update 
-    #     rating = find_rating
-    #     rating.update(rating_params) 
-    #     render json: rating
-    # end
+    def update 
+        rating = find_rating
+        rating.update(rating_params) 
+        render json: rating
+    end
 
      # DELETE /ratings/:id 
      def destroy 
@@ -44,11 +45,12 @@ class RatingsController < ApplicationController
     private 
     
     def find_rating 
-        Rating.find(params[:id])
+        @current_user.ratings.find(params[:id])
+        # only looking through current user
     end
     
     def rating_params
-        params.permit(:rating, :review, :sitter_id, :user_id)
+        params.permit(:rating, :review, :sitter_id)
     end
     
     # def render_not_found_response
