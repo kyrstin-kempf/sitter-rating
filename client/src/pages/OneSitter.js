@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams} from "react-router-dom";
-// import { Link } from 'react-router-dom';
-import NewRating from "./NewRating";
+import { Link } from 'react-router-dom';
+import NewRating from "../components/NewRating";
 import editIcon from '../assets/edit_icon.png'
 import oneStar from '../assets/One_Star.png'
 import twoStars from '../assets/Two_Stars.png'
@@ -18,11 +18,6 @@ function OneSitter({ sitters, user, addSitterRating }) {
     const handleClick = () => {
         setIsShown(!isShown)
     };
-
-    function handleEdit(id) {
-        // console.log(`edit me ${id}`)
-        
-    }
 
     return (
         <div>
@@ -51,18 +46,17 @@ function OneSitter({ sitters, user, addSitterRating }) {
                                     }) ()}
                                     <p>{r.review}</p>
                                     {user.id === r.user_id ? (
+                                        <Link to={`/sitters/${sitter.id}/ratings/${r.id}/edit`}>
                                         <span className="edit-container">
-                                        <img className='edit-icon' onClick={() => handleEdit(r.id)} src={editIcon} alt='edit rating'/>
+                                        <img className='edit-icon' src={editIcon} alt='edit rating'/>
                                         </span>
+                                        </Link>
                                     ) : (
                                         <span></span>
                                     )}
                                 </div>
                             ))
                         )}
-                    {/* <Link to={`/ratings/new`}>
-                        <p className='add-rating'>+ Add Rating</p>
-                    </Link> */}
                 </div>
             ) : (
                 <div>
@@ -72,7 +66,7 @@ function OneSitter({ sitters, user, addSitterRating }) {
         </div>
             <button onClick={handleClick}>+ Add Rating</button>
             { isShown && (
-                <NewRating addSitterRating={addSitterRating} id={id} user={user} />
+                <NewRating addSitterRating={addSitterRating} id={id} setIsShown={setIsShown} />
             )}
         </div>
     )
