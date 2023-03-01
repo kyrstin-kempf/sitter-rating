@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
 
   def destroy 
     session.delete :user_id
-    puts 'getting me?'
     head :no_content
   end
 
