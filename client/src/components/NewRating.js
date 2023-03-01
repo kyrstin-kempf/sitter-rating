@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import oneStar from '../assets/One_Star.png'
 import twoStars from '../assets/Two_Stars.png'
 import threeStars from '../assets/Three_Stars.png'
 import fourStars from '../assets/Four_Stars.png'
 import fiveStars from '../assets/Five_Stars.png'
     
-function NewRating({ addSitterRating, id, user }) {
+function NewRating({ addSitterRating, id, setIsShown }) {
     const [rating, setRating] = useState("");
     const [review, setReview] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // console.log(user)
 
@@ -25,9 +25,8 @@ function NewRating({ addSitterRating, id, user }) {
             },
             body: JSON.stringify({
             rating,
-            sitter_id: id,
-            user_id: user.id,
             review,
+            sitter_id: id,
             }),
         })
             .then((r) => {
@@ -36,8 +35,11 @@ function NewRating({ addSitterRating, id, user }) {
                     r.json()
                     .then((data) => {
                         addSitterRating(data)
+                        setRating("")
+                        setReview("")
+                        setIsShown(false)
                     }) 
-                    navigate('/sitters')
+                    // navigate('/sitters')
                 } 
                 else {
                     r.json().then((err) => setErrors(err.errors)); 
@@ -47,7 +49,6 @@ function NewRating({ addSitterRating, id, user }) {
 
 return (
     <form className='new-rating-form' onSubmit={handleSubmit}>
-        <h1>Add New Rating</h1>
         <p className="rating-labels">Rating</p>
         <div className="rating-radio-box">
             <div className="rating-box">
