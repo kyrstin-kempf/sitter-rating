@@ -19,3 +19,5 @@ class UsersController < ApplicationController
   end
 
 end
+
+# 17 colelction methods

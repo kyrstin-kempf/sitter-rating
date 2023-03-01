@@ -14,12 +14,19 @@ Rails.application.routes.draw do
   get '/sitters', to: 'sitters#index'
   get '/sitters/:id', to: 'sitters#show'
   post '/sitters', to: 'sitters#create'
-  # patch '/sitters/:id', to: 'sitters#update'
   # delete '/sitters/:id', to: 'sitters#destroy'
   
-  # resources :ratings, only: [:index, :show, :create, :update]
+  # resources :ratings
   # get '/ratings', to: 'ratings#index'
   post '/ratings', to: 'ratings#create'
-  # patch '/ratings/:id', to: 'ratings#update'
+  patch '/ratings/:id', to: 'ratings#update'
+  delete '/ratings/:id', to: 'ratings#destroy'
 
 end
+
+# landing page is list my sitters not all sitters
+# not my sitter until I review them - adding sitter is general adding
+# add star to each review, nix avg
+# add sitter errors
+
+ 
