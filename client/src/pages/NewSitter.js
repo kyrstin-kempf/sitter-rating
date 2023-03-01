@@ -43,8 +43,9 @@ function NewSitter({ addSitter }) {
     }
 
     return (
+        <div>
+            <h1 className="page-title">New Sitter</h1>
         <form className='new-sitter-form' onSubmit={handleSubmit}>
-            <h1>Add New Sitter</h1>
             <label htmlFor="first name">First Name:</label>
             <input
             type="text"
@@ -89,6 +90,7 @@ function NewSitter({ addSitter }) {
                 ))}
             </div>
         </form>
+        </div>
     );
 
 }

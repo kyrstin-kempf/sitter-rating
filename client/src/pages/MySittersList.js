@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 function MySittersList({ user, sitters }) {
 
     return (
+        <div>
+            <h1 className='page-title'>My Sitters</h1>
         <div className="all-sitters-container">
-            <h1>My Sitters</h1>
             {sitters.length > 0 ? (
                 // <OneSitter />
                 user.sitters.map((s) => (
@@ -13,7 +14,7 @@ function MySittersList({ user, sitters }) {
                         <p>Experience: {s.years_of_experience} years</p>
                         <p>Hourly rate: ${s.hourly_rate}</p>
                         <Link to={`/sitters/${s.id}`}>
-                        <p>See all reviews ›</p>
+                        <p className='review-link'>See all reviews ›</p>
                         </Link>
                     </div>
                 ))
@@ -22,6 +23,7 @@ function MySittersList({ user, sitters }) {
                     <h2>no sitters found</h2>
                 </div>
             )}
+        </div>
         </div>
     );
 }
