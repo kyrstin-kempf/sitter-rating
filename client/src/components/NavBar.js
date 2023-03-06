@@ -17,10 +17,27 @@ function NavBar({ setUser }) {
   
   return (
     <div className='nav-menu'>
-      <NavLink to='/'><img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/></NavLink>
-      <NavLink to='/sitters'>All Sitters</NavLink>
-      <NavLink to='/sitters/new'>New Sitter</NavLink>
-      <button onClick={handleLogout}>Logout</button>
+      <NavLink
+        to='/' 
+        className={({ isActive }) => "logo" + (isActive ? " active" : "")}
+        >
+          <img src={logo} alt='SitterRating Logo - a circle with SR'/>
+        </NavLink>
+      <div className='float-right'>
+      <NavLink 
+        to='/sitters' 
+        className={({ isActive }) => (isActive ? " active" : "")}
+        >
+          All Sitters
+        </NavLink>
+      <NavLink 
+      to='/sitters/new' 
+      className={({ isActive }) => (isActive ? " active" : "")}
+      >
+        New Sitter
+      </NavLink>
+      <button onClick={handleLogout} id="nav-logout">Logout</button>
+      </div>
     </div>
   );
 }
