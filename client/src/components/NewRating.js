@@ -114,10 +114,10 @@ return (
         value={review}
         onChange={(e) => setReview(e.target.value)}
         />
-        <button type="submit">
+        <button type="submit" className="submit-button">
             {isLoading ? 'Loading...' : 'Submit'}
         </button>
-        <div>
+        <div className='login-error'>
             {errors?.map((err) => (
                 <p key={err}>{err}</p>
             ))}

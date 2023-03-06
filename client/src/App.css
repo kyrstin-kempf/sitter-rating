@@ -44,18 +44,63 @@ p {
 
 div.nav-menu {
   padding: 10px 10%;
-  text-align: right;
+  height: 110px;
+}
+
+/* .nav-menu a:active {
+  border-bottom: 2px solid #7CA7BE;
+} */
+
+.float-right {
+  float: right;
+  /* border: 2px dotted #000; */
+  margin-top: 35px;
+}
+
+div.nav-menu a, button {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  width: 120px;
+  text-align: center;
+  margin-right: 30px;
+  color: #000;
+}
+
+/* a[aria-current="page"] {
+  border-bottom: 2px solid #7CA7BE;
+} */
+
+.active {
+  border-bottom: 2px solid #7CA7BE;
+}
+
+a.logo {
   height: 87px;
 }
 
-div.nav-menu a {
-  padding-left:  20px;
-  padding-right: 20px;
-  line-height: 94px;
+.logo-landing {
+  display: block;
+  height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -20px;
+  padding-bottom: 15px;
 }
 
-div.nav-menu img.logo {
-  float: left;
+#nav-logout {
+  font-size: inherit;
+  width: 140px;
+  height: 40px;
+  margin-right: 0;
+  /* background-color: transparent; */
+  border: none;
+  border-radius: 2px;
+}
+
+#nav-logout:hover {
+  background-color: rgb(220, 220, 220);
+  cursor: pointer;
 }
 
 .page-title {
@@ -79,55 +124,103 @@ div.nav-menu img.logo {
   height: 90px;
   float: left;
   margin: 10px;
+  border-radius: 6px;
 }
 
-.review-link {
-  padding-top: 8px;
+p.review-link {
+  padding-top: 10px;
   text-decoration: none;
+  border-bottom-style: none;
 }
+
+/* .review-link {
+  padding-top: 10px;
+  text-decoration: none;
+} */
 
 div.review-container {
   /* outline: solid 1px rgb(189, 189, 189); */
   border-radius: 2px;
   height: 90px;
+  width: 250px;
   overflow: hidden;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 15px;
   box-shadow: 2px 2px 6px rgb(202, 201, 201);
+  border-radius: 6px;
 }
 
 .one-sitter-box {
-  outline: solid 1px purple;
   padding: 25px 20%;
-  margin-left: 25px;
-  margin-right: 25px;
   text-align: center;
 }
 
 /* -------------------------------------- Forms */
 
 .login-form {
-  padding: 60px;
-  margin: 40px;
-  border: 2px solid #000;
-  height: 350px;
-  width: 400px;
+  padding: 40px;
+  margin: 40px auto;
+  /* border: 2px solid #000; */
+  height: auto;
+  width: 380px;
+  box-shadow: 2px 2px 6px rgb(202, 201, 201);
+  border-radius: 6px;
 }
 
 .login-form input {
+  padding: 4px;
   width: 100%;
+  margin: 4px 0;
+  box-sizing: border-box;
+  border-radius: 2px;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.login-form input:focus {
+  outline: solid 2px #7CA7BE;
+}
+
+.switch-login {
+  margin: 40px auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.line {
+  width: 800px;
+  border-top: 1px solid rgb(220, 220, 220);
 }
 
 .new-sitter-form {
-  padding: 20px 60px;
-  margin-left: 30%;
-  margin-right: 30%;
+  padding: 40px 60px;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin: 20px 25%; */
   box-shadow: 2px 2px 6px rgb(202, 201, 201);
+  border-radius: 6px;
 }
+
+.landing-heading {
+  font-size: 22px;
+  padding-bottom: 6px;
+}
+
 .new-sitter-form input {
-  padding: 5px;
+  padding: 6px;
   width: 100%;
-  display: inline-block;
+  margin: 8px 0;
+  box-sizing: border-box;
+  /* display: inline-block; */
+  border-radius: 2px;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.new-sitter-form input:focus {
+  outline: solid 2px #7CA7BE;
+  /* border: none; */
 }
 
 .new-rating-form {
@@ -136,11 +229,30 @@ div.review-container {
   box-shadow: 2px 2px 6px rgb(202, 201, 201);
 }
 .new-rating-form input {
-  padding: 5px;
+  padding: 8px;
   margin: 8px 0 20px 0;
   width: 100%;
   box-sizing: border-box;
   display: inline-block;
+}
+
+.submit-button {
+  color: #fff;
+  background-color: #7CA7BE;
+  font-size: 16px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #6d94a8;
+}
+
+.submit-button:focus {
+  /* background-color: #FFF;
+  color:#000; */
+  outline: solid 2px #7CA7BE;
 }
 
 /* ----------------------------------- Rating Radio Buttons */
@@ -161,6 +273,7 @@ div.review-container {
 .rating-box input[type='radio'] {
   accent-color: black;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .rating-stars {
@@ -186,7 +299,7 @@ div.review-container {
   font-family: inherit;
 }
 #review:focus {
-  outline: solid 1px #7CA7BE;
+  outline: solid 2px #7CA7BE;
 }
 
 .edit-container {
@@ -197,12 +310,23 @@ div.review-container {
   block-size: 20px;
   padding: 2px 0 2px 2px;
   position: absolute;
-  top: -80px;
-  right: -210px;
+  top: -70px;
+  right: -130px;
+  /* left: 60%; */
 }
 
 #delete-rating {
   color: red;
   cursor: pointer;
   float: right;
+}
+
+#add-rating-btn {
+  margin: 20px 10%;
+}
+
+.login-error {
+  color: red;
+  float: right;
+
 }

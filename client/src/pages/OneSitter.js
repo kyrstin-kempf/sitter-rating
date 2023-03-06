@@ -64,7 +64,7 @@ function OneSitter({ sitters, user, addSitterRating }) {
                 </div>
             )}
         </div>
-            <button onClick={handleClick}>+ Add Rating</button>
+            <button onClick={handleClick} className="submit-button" id="add-rating-btn">+ Add Rating</button>
             { isShown && (
                 <NewRating addSitterRating={addSitterRating} id={id} setIsShown={setIsShown} />
             )}

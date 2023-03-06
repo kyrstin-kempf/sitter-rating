@@ -13,8 +13,8 @@ function MySittersList({ user, sitters }) {
                         <h2>{s.first_name} {s.last_name}</h2>
                         <p>Experience: {s.years_of_experience} years</p>
                         <p>Hourly rate: ${s.hourly_rate}</p>
-                        <Link to={`/sitters/${s.id}`}>
-                        <p className='review-link'>See all reviews ›</p>
+                        <Link to={`/sitters/${s.id}`} className='review-link'>
+                            <p>See all reviews ›</p>
                         </Link>
                     </div>
                 ))

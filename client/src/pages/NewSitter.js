@@ -81,10 +81,10 @@ function NewSitter({ addSitter }) {
             value={hourlyRate}
             onChange={(e) => setHourlyRate(e.target.value)}
             />
-            <button type="submit">
+            <button type="submit" className="submit-button">
                 {isLoading ? 'Loading...' : 'Submit'}
             </button>
-            <div>
+            <div className='login-error'>
                 {errors?.map((err) => (
                     <p key={err}>{err}</p>
                 ))}

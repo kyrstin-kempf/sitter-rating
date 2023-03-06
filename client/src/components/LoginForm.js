@@ -29,8 +29,8 @@ function Login({ onLogin }) {
   
     return (
       <form className='login-form' onSubmit={handleSubmit}>
-        <img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/>
-        <h1>Log In</h1>
+        <img className='logo-landing' src={logo} alt='SitterRating Logo - a circle with SR'/>
+        <h1 className='landing-heading'>Log In</h1>
         <label htmlFor="login email">Email:</label>
         <input
           type="text"
@@ -47,10 +47,10 @@ function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">
+        <button type="submit" className='submit-button'>
           {isLoading ? "Loading..." : "Login"}
         </button>
-        <div id='login-error'>
+        <div className='login-error'>
           {errors?.map((err) => (
             <p key={err}>{err}</p>
           ))}
