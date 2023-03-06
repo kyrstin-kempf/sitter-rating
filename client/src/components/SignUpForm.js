@@ -7,11 +7,12 @@ function SignUp({ onLogin }) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
   
     function handleSubmit(e) {
       e.preventDefault();
-      // console.log('clicked')
+      setIsLoading(true);
       fetch("/signup", {
         method: "POST",
         headers: {
@@ -25,14 +26,20 @@ function SignUp({ onLogin }) {
           password_confirmation: passwordConfirmation,
         }),
       })
-        .then((r) => r.json())
-        .then((user) => onLogin(user));
+        .then((r) => {
+          setIsLoading(false);
+          if (r.ok) {
+            r.json().then((user) => onLogin(user));
+          } else {
+            r.json().then((err) => setErrors(err.errors));
+          }
+        });
     }
   
     return (
       <form className='login-form' onSubmit={handleSubmit}>
-        <img className='logo' src={logo} alt='SitterRating Logo - a circle with SR'/>
-        <h1>Sign Up</h1>
+        <img className='logo-landing' src={logo} alt='SitterRating Logo - a circle with SR'/>
+        <h1 className='landing-heading'>Sign Up</h1>
         <label htmlFor="first name">First Name:</label>
         <input
           type="text"
@@ -68,7 +75,14 @@ function SignUp({ onLogin }) {
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" className='submit-button'>
+          {isLoading ? "Loading..." : "Submit"}
+        </button>
+        <div className='login-error'>
+          {errors?.map((err) => (
+            <p key={err}>{err}</p>
+          ))}
+        </div>
       </form>
     );
   }
