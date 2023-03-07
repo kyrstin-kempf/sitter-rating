@@ -39,7 +39,6 @@ function SignUp({ onLogin }) {
     return (
       <form className='login-form' onSubmit={handleSubmit}>
         <img className='logo-landing' src={logo} alt='SitterRating Logo - a circle with SR'/>
-        <h1 className='landing-heading'>Sign Up</h1>
         <label htmlFor="first name">First Name:</label>
         <input
           type="text"
@@ -75,7 +74,7 @@ function SignUp({ onLogin }) {
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
         />
-        <button type="submit" className='submit-button'>
+        <button type="submit" className='submit-button-landing'>
           {isLoading ? "Loading..." : "Submit"}
         </button>
         <div className='login-error'>

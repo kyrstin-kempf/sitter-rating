@@ -59,7 +59,7 @@ function UpdateRating({ sitters, updateSitterRating, deleteSitterRating }) {
 
 return (
     <form className='new-rating-form' onSubmit={handleSubmit}>
-        <h1>Update</h1>
+        <h1 id="update">Update Rating</h1>
         <p className="rating-labels">Rating</p>
         <div className="rating-radio-box">
             <div className="rating-box">
@@ -125,7 +125,7 @@ return (
         value={review}
         onChange={(e) => setReview(e.target.value)}
         />
-        <span id='delete-rating' onClick={() => handleDelete()}>Delete</span>
+        <span id='delete-rating' onClick={() => handleDelete()}>X Delete</span>
         <button type="submit" className="submit-button">
             {isLoading ? 'Loading...' : 'Save'}
         </button>

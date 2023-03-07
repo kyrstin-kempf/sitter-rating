@@ -30,7 +30,6 @@ function Login({ onLogin }) {
     return (
       <form className='login-form' onSubmit={handleSubmit}>
         <img className='logo-landing' src={logo} alt='SitterRating Logo - a circle with SR'/>
-        <h1 className='landing-heading'>Log In</h1>
         <label htmlFor="login email">Email:</label>
         <input
           type="text"
@@ -47,7 +46,7 @@ function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className='submit-button'>
+        <button type="submit" className='submit-button-landing'>
           {isLoading ? "Loading..." : "Login"}
         </button>
         <div className='login-error'>
