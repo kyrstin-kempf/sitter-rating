@@ -7,7 +7,6 @@ function MySittersList({ user, sitters }) {
             <h1 className='page-title'>My Sitters</h1>
         <div className="all-sitters-container">
             {sitters.length > 0 ? (
-                // <OneSitter />
                 user.sitters.map((s) => (
                     <div key={s.id} className="sitter-box">
                         <h2>{s.first_name} {s.last_name}</h2>

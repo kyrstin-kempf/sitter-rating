@@ -9,7 +9,6 @@ function NavBar({ setUser }) {
             method: 'DELETE',
         }).then((r) => {
           if (r.ok) {
-            // console.log('delete me')
             setUser(null);
           }
         });

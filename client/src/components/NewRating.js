@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useNavigate } from 'react-router-dom';
 import oneStar from '../assets/One_Star.png'
 import twoStars from '../assets/Two_Stars.png'
 import threeStars from '../assets/Three_Stars.png'
@@ -11,9 +10,6 @@ function NewRating({ addSitterRating, id, setIsShown }) {
     const [review, setReview] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    // const navigate = useNavigate();
-
-    // console.log(user)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -39,7 +35,6 @@ function NewRating({ addSitterRating, id, setIsShown }) {
                         setReview("")
                         setIsShown(false)
                     }) 
-                    // navigate('/sitters')
                 } 
                 else {
                     r.json().then((err) => setErrors(err.errors)); 

@@ -7,7 +7,6 @@ import SitterList from '../pages/SitterList';
 import NewSitter from '../pages/NewSitter';
 import OneSitter from '../pages/OneSitter';
 import UpdateRating from '../pages/UpdateRating';
-// import NewRating from '../pages/NewRating';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -69,9 +68,6 @@ function App() {
     
     setSitters(newSitters);
     setUser(updatedUser);
-
-    // --- add sitter if new sitter and rating. Only add rating of already have sitter
-    // -------------- both states need to updated
   };
 
   const updateSitterRating = (updatedRating) => {
