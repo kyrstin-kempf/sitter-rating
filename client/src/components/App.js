@@ -35,7 +35,6 @@ function App() {
   }
 
   const addSitterRating = (rating) => {
-    // console.log(rating)
     const s = sitters.find(s => s.id === rating.sitter_id);
     const newS = {...s, ratings: [...s.ratings, rating]};
     const newSitters = sitters.map((sit) => sit.id === s.id ? newS : sit);
@@ -72,7 +71,6 @@ function App() {
 
   const updateSitterRating = (updatedRating) => {
     const s = sitters.find(s => s.id === updatedRating.sitter_id)
-    // console.log(s);
     const sitRate = s.ratings.map(r => {
       if(r.id === updatedRating.id) {
         return updatedRating 
@@ -94,7 +92,6 @@ function App() {
     
     if(existingSitter && existingSitter.ratings.length === 1) {
       const updatedSitters = updatedUser.sitters.filter(s => JSON.stringify(s.id) !== sitterId);
-      console.log(updatedSitters)
       updatedUser = { ...updatedUser, sitters: updatedSitters};
     }
     
