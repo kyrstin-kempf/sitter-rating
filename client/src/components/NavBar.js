@@ -9,6 +9,7 @@ function NavBar({ setUser }) {
             method: 'DELETE',
         }).then((r) => {
           if (r.ok) {
+            // console.log('delete me')
             setUser(null);
           }
         });
@@ -16,25 +17,10 @@ function NavBar({ setUser }) {
   
   return (
     <div className='nav-menu'>
-      <NavLink
-        to='/' 
-        className={({ isActive }) => "logo" + (isActive ? " active" : "")}
-        >
-          <img src={logo} alt='SitterRating Logo - a circle with SR'/>
-        </NavLink>
+      <NavLink to='/' className="logo"><img src={logo} alt='SitterRating Logo - a circle with SR'/></NavLink>
       <div className='float-right'>
-      <NavLink 
-        to='/sitters' 
-        className={({ isActive }) => (isActive ? " active" : "")}
-        >
-          All Sitters
-        </NavLink>
-      <NavLink 
-      to='/sitters/new' 
-      className={({ isActive }) => (isActive ? " active" : "")}
-      >
-        New Sitter
-      </NavLink>
+      <NavLink end to='/sitters'>All Sitters</NavLink>
+      <NavLink end to='sitters/new'>New Sitter</NavLink>
       <button onClick={handleLogout} id="nav-logout">Logout</button>
       </div>
     </div>
