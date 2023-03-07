@@ -7,16 +7,16 @@ import threeStars from '../assets/Three_Stars.png'
 import fourStars from '../assets/Four_Stars.png'
 import fiveStars from '../assets/Five_Stars.png'
     
-function UpdateRating({ sitters, updateSitterRating }) {
+function UpdateRating({ sitters, updateSitterRating, deleteSitterRating }) {
     const { sitter_id, id } = useParams();
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     
     const currentSitter = sitters.find(s => JSON.stringify(s.id) === sitter_id)
-    const currentRating = currentSitter.ratings.find(r => JSON.stringify(r.id) === id)
-    const oldRating = currentRating.rating
-    const oldReview = currentRating.review
+    const currentRating = currentSitter?.ratings.find(r => JSON.stringify(r.id) === id)
+    const oldRating = currentRating?.rating ?? 0 
+    const oldReview = currentRating?.review ?? ''
     const [rating, setRating] = useState(oldRating);
     const [review, setReview] = useState(oldReview);
 
@@ -53,8 +53,8 @@ function UpdateRating({ sitters, updateSitterRating }) {
         fetch(`/ratings/${id}`, {
             method: "DELETE",
         })
-        .then(r => r.json())
-        .then(data => console.log(data))
+        .then(deleteSitterRating(id, sitter_id))
+        navigate(-1)
     }
 
 return (
@@ -126,10 +126,10 @@ return (
         onChange={(e) => setReview(e.target.value)}
         />
         <span id='delete-rating' onClick={() => handleDelete()}>Delete</span>
-        <button type="submit">
+        <button type="submit" className="submit-button">
             {isLoading ? 'Loading...' : 'Save'}
         </button>
-        <div>
+        <div className='login-error'>
             {errors?.map((err) => (
                 <p key={err}>{err}</p>
             ))}
