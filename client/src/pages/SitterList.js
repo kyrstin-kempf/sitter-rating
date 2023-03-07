@@ -12,8 +12,8 @@ function SitterList({ sitters }) {
                         <h2>{sitter.first_name} {sitter.last_name}</h2>
                         <p>Experience: {sitter.years_of_experience} years</p>
                         <p>Hourly rate: ${sitter.hourly_rate}</p>
-                        <Link to={`/sitters/${sitter.id}`}>
-                        <p className='review-link'>See all reviews ›</p>
+                        <Link to={`/sitters/${sitter.id}`} className="review-link">
+                        <p className='review-link-p'>See all reviews ›</p>
                         </Link>
                     </div>
                 ))
