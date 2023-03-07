@@ -4,6 +4,8 @@
 
 SitterRating allows a user to signup, login, create new sitters, and create, edit, and delete ratings. On login, the user will see the sitters they have rated when the option to navigate to view all sitters.
 
+![](SitterRating.gif)
+
 ## Requirements
 
 To run this application, make sure the following is installed:
