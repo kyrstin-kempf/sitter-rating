@@ -1,6 +1,4 @@
 class RatingsController < ApplicationController
-    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     skip_before_action :authorize, only: [:index]
 
@@ -11,18 +9,7 @@ class RatingsController < ApplicationController
         render json: ratings
     end
 
-    # GET /ratings/:id
-    # def show 
-    #     rating = find_rating
-    #     if rating 
-    #         render json: rating
-    #     else 
-    #         render json: { error: 'Rating not found' }, status: :not_found
-    #     end
-    # end
-
     # POST /ratings
-    # collection method
     def create 
         rating = @current_user.ratings.create!(rating_params) 
         render json: rating, status: :created 
@@ -46,19 +33,10 @@ class RatingsController < ApplicationController
     
     def find_rating 
         @current_user.ratings.find(params[:id])
-        # only looking through current user
     end
     
     def rating_params
         params.permit(:rating, :review, :sitter_id)
     end
-    
-    # def render_not_found_response
-    #     render json: { error: "Rating not found" }, status: :not_found 
-    # end
-
-    # def render_unprocessable_entity_response(invalid)
-    #     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    # end
 
 end

@@ -7,8 +7,7 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
   
-  def show 
-    # byebug
+  def show
     render json: @current_user
   end
   
@@ -19,5 +18,3 @@ class UsersController < ApplicationController
   end
 
 end
-
-# 17 colelction methods
