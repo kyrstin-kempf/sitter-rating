@@ -1,10 +1,23 @@
 class SittersController < ApplicationController
+    skip_before_action :authorize, only: [:index, :search]
    
     # GET /sitters
     def index 
         sitters = Sitter.all 
         render json: sitters 
     end
+
+    # GET /sitters/search/:term
+    def search
+        allSitters = Sitter.all
+        matchingSitters = allSitters.find_all{ |s| s.first_name.upcase.include?(params[:term].upcase) }
+        render json: matchingSitters
+    end
+
+    # passing in term to route
+    # /sitters/search/sar (sarah, sara, etc.)
+    # caps not matter
+    # return sitter object (all sitters name matches search not exact)
 
     # POST /sitters
     def create 

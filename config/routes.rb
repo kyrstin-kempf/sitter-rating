@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/sitters/search/:term', to: 'sitters#search'
+
+  # passing in term to route
+  # /sitters/search/sar (sarah, sara, etc.)
+  # caps not matter
+  # return sitter object (all sitters name matches search not exact)
  
   get '/sitters', to: 'sitters#index'
   get '/sitters/:id', to: 'sitters#show'
