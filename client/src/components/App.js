@@ -13,14 +13,15 @@ function App() {
   const [sitters, setSitters] = useState([]);
 
   useEffect(() => {
+    document.title = 'SitterRating';
+  }, []);
+
+  useEffect(() => {
       fetch('/sitters')
       .then((r) => r.json())
       .then(setSitters);
   }, []);
 
-  useEffect(() => {
-    document.title = 'SitterRating';
-  }, []);
 
   useEffect(() => {
     fetch('/me').then((response) => {

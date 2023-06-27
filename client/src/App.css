@@ -170,14 +170,7 @@ div.review-container p {
   border-radius: 6px;
 }
 
-.new-sitter-form input {
-  padding: 6px;
-  width: 100%;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-radius: 2px;
-  border: 1px solid rgb(196, 196, 196);
-}
+
 
 .new-sitter-form input:focus {
   outline: solid 2px #7CA7BE;
